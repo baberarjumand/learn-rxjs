@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
         {
           title: '1.1',
           url: '/example1a',
-          icon: 'arrow-forward'
+          icon: 'radio-button-on'
         }
         // {
         //   title: '1.2',
