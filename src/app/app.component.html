@@ -3,32 +3,71 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
+          <ion-list-header>Learn RxJS</ion-list-header>
+          <ion-note>One example at a time</ion-note>
 
-          <ion-menu-toggle
-            auto-hide="false"
-            *ngFor="let p of appPages; let i = index"
-          >
+          <div *ngFor="let p of appPages">
+            <ion-menu-toggle auto-hide="false" *ngIf="p.url">
+              <ion-item
+                routerDirection="root"
+                [routerLink]="[p.url]"
+                lines="none"
+                detail="false"
+                routerLinkActive="active"
+              >
+                <ion-icon
+                  slot="start"
+                  [ios]="p.icon + '-outline'"
+                  [md]="p.icon + '-sharp'"
+                ></ion-icon>
+                <ion-label>{{ p.title }}</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
             <ion-item
-              (click)="selectedIndex = i"
-              routerDirection="root"
-              [routerLink]="[p.url]"
+              button
+              *ngIf="p.children?.length > 0"
               lines="none"
+              (click)="p.open = !p.open"
+              [class.active-parent]="p.open"
               detail="false"
-              [class.selected]="selectedIndex == i"
             >
               <ion-icon
                 slot="start"
-                [ios]="p.icon + '-outline'"
-                [md]="p.icon + '-sharp'"
+                name="arrow-forward"
+                *ngIf="!p.open"
+              ></ion-icon>
+              <ion-icon
+                slot="start"
+                name="arrow-down"
+                *ngIf="p.open"
               ></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
-          </ion-menu-toggle>
+            <ion-list *ngIf="p.open">
+              <ion-menu-toggle>
+                <ion-item
+                  *ngFor="let sub of p.children"
+                  routerDirection="root"
+                  [routerLink]="[sub.url]"
+                  lines="none"
+                  detail="false"
+                  routerLinkActive="active"
+                  class="sub-item"
+                  button
+                >
+                  <ion-icon
+                    slot="start"
+                    [ios]="sub.icon + '-outline'"
+                    [md]="sub.icon + '-sharp'"
+                  ></ion-icon>
+                  <ion-label>{{ sub.title }}</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+            </ion-list>
+          </div>
         </ion-list>
 
-        <ion-list id="labels-list">
+        <!-- <ion-list id="labels-list">
           <ion-list-header>Labels</ion-list-header>
 
           <ion-item *ngFor="let label of labels" lines="none">
@@ -39,7 +78,7 @@
             ></ion-icon>
             <ion-label>{{ label }}</ion-label>
           </ion-item>
-        </ion-list>
+        </ion-list> -->
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

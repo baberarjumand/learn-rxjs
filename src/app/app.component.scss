@@ -117,3 +117,20 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+
+.active {
+  --ion-text-color: var(--ion-color-primary);
+  --background: var(--ion-color-secondary);
+  ion-icon {
+    color: var(--ion-color-primary);
+  }
+}
+
+.active-parent {
+  font-weight: 500;
+}
+
+.sub-item {
+  padding-left: 20px;
+  font-size: small;
+}
