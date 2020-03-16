@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'example1a',
     loadChildren: () => import('./example1a/example1a.module').then( m => m.Example1aPageModule)
+  },
+  {
+    path: 'prereqs',
+    loadChildren: () => import('./prereqs/prereqs.module').then( m => m.PrereqsPageModule)
   }
 ];
 

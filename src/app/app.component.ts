@@ -17,11 +17,11 @@ export class AppComponent implements OnInit {
       url: '/homepage',
       icon: 'home'
     },
-    // {
-    //   title: 'Example 1',
-    //   url: '/homepage',
-    //   icon: 'radio-button-on'
-    // },
+    {
+      title: 'Pre-requisites',
+      url: '/prereqs',
+      icon: 'checkmark-done'
+    },
     {
       title: 'Example 1',
       children: [
@@ -30,13 +30,18 @@ export class AppComponent implements OnInit {
           url: '/example1a',
           icon: 'radio-button-on'
         }
-        // {
-        //   title: '1.2',
-        //   url: '/homepage',
-        //   icon: 'arrow-forward'
-        // }
       ]
-    }
+    },
+    // {
+    //   title: 'Example 2',
+    //   children: [
+    //     {
+    //       title: '2.1',
+    //       url: '/example1a',
+    //       icon: 'radio-button-on'
+    //     }
+    //   ]
+    // }
   ];
   // public appPages = [
   //   {
