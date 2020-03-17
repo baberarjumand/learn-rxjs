@@ -3,8 +3,15 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Learn RxJS</ion-list-header>
-          <ion-note>One example at a time</ion-note>
+          <ion-list-header>
+            <ion-item lines="none">
+              <ion-thumbnail>
+                <img src="../assets/images/rxjs_icon_image.png" />
+              </ion-thumbnail>
+            </ion-item>
+            Learn RxJS
+          </ion-list-header>
+          <!-- <ion-note>One example at a time</ion-note>           -->
 
           <div *ngFor="let p of appPages">
             <ion-menu-toggle auto-hide="false" *ngIf="p.url">
